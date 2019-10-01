@@ -8,12 +8,12 @@ function App() {
     const { theme } = useContext(ThemeContext);
 
     return (
-        <>
+        <div style={{ paddingTop: 56 }}>
             <MuiThemeProvider theme={theme}>
-                <SimpleAppBar/>
+                <SimpleAppBar style={{ position: 'fixed', top: 0 }} />
                 <TodoList/>
             </MuiThemeProvider>
-        </>
+        </div>
     );
 }
 

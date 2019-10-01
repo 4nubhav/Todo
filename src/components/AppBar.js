@@ -36,7 +36,7 @@ function SimpleAppBar() {
     return (
         <div className={classes.root}>
             <CssBaseline/>
-            <AppBar position="static">
+            <AppBar>
                 <Toolbar>
                     <Typography variant="h6" className={classes.title}>
                         To Do List
