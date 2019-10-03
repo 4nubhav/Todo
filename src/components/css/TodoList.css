@@ -1,13 +1,13 @@
-#form-paper {
+#container {
+    padding-bottom: 56px;
+}
+
+#list-paper {
     margin: 20px;
-    padding: 0 15px 10px 15px;
+    padding: 15px 15px 15px 20px;
 }
 
-#add-btn {
-    margin: 10px 0 10px 0;
-}
-
-#form-paper ul {
+#list-paper ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -15,20 +15,24 @@
 
 /* MEDIA QUERIES */
 
-@media screen and (max-width: 700px){
-    #form-paper {
+@media screen and (max-width: 600px) {
+    #list-paper {
         min-width: 90%;
     }
 }
 
-@media screen and (min-width: 700px){
-    #form-paper {
+@media screen and (min-width: 600px) {
+    #container {
+        padding-bottom: 70px;
+    }
+
+    #list-paper {
         min-width: 60%;
     }
 }
 
-@media screen and (min-width: 1200px) {
-    #form-paper {
+@media screen and (min-width: 1280px) {
+    #list-paper {
         min-width: 40%;
     }
 }

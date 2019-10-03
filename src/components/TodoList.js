@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import './css/TodoList.css'
 import 'typeface-roboto';
-import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
-import DeleteIcon from '@material-ui/icons/Delete';
+import ClearIcon from '@material-ui/icons/Clear';
+import AddTodo from "./AddTodo";
 
 function TodoListItem(props) {
     return (
@@ -16,24 +15,21 @@ function TodoListItem(props) {
                 {props.task}
             </Typography>
             <IconButton onClick={props.handleDelete} value={props.task} style={{ float: "right" }}>
-                <DeleteIcon />
+                <ClearIcon/>
             </IconButton>
         </li>
     );
 }
 
 function TodoList() {
-    const [newTask, setNewTask] = useState("");
     const [tasks, setTasks] = useState(() => {
         const localTasks = localStorage.getItem('tasks');
         return localTasks ? JSON.parse(localTasks) : []
     });
 
-    const addTask = (e) => {
-        e.preventDefault();
+    const addToTasks = (newTask) => {
         setTasks([...tasks, newTask]);
         localStorage.setItem('tasks', JSON.stringify([...tasks, newTask]));
-        setNewTask("");
     };
 
     const deleteTask = (task) => {
@@ -48,36 +44,20 @@ function TodoList() {
                                                               handleDelete={deleteTask} />);
 
     return(
-        <>
+        <div id="container">
             <Grid container>
                 <Grid item xs={12}>
                     <Grid container justify="center">
-                        <Paper id="form-paper">
+                        <Paper id="list-paper">
                             <ul>
-                                <form onSubmit={addTask}>
-                                    <TextField
-                                        id="new-task-tf"
-                                        type="text"
-                                        required={true}
-                                        value={newTask}
-                                        onChange={(e) => setNewTask(e.target.value)}
-                                        placeholder="What to do...?"
-                                        fullWidth
-                                        margin="normal"
-                                        InputLabelProps={{
-                                            shrink: true,
-                                        }}
-                                        autoComplete='off'
-                                    />
-                                    <Button id="add-btn" type="submit" variant="contained" color="primary">Add</Button>
-                                </form>
                                 {taskList}
                             </ul>
                         </Paper>
+                        <AddTodo addToTasks={addToTasks}/>
                     </Grid>
                 </Grid>
             </Grid>
-        </>
+        </div>
     );
 }
 

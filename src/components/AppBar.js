@@ -4,7 +4,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import CssBaseline from "@material-ui/core/CssBaseline/CssBaseline";
-import Button from '@material-ui/core/Button';
+import IconButton from "@material-ui/core/IconButton";
 import { ThemeContext } from "./contexts/ThemeContext";
 
 const useStyles = makeStyles(theme => ({
@@ -41,9 +41,9 @@ function SimpleAppBar() {
                     <Typography variant="h6" className={classes.title}>
                         To Do List
                     </Typography>
-                    <Button color="inherit" onClick={toggleTheme}>
+                    <IconButton color="inherit" onClick={toggleTheme}>
                         <ThemeIndicator/>
-                    </Button>
+                    </IconButton>
                 </Toolbar>
             </AppBar>
         </div>

@@ -1,0 +1,25 @@
+#form-paper {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+}
+
+.new-task-tf {
+    width: 80%;
+    padding-left: 10px !important;
+}
+
+/* MEDIA QUERIES */
+
+@media screen and (min-width: 600px) {
+    .new-task-tf {
+        width: 90%;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .new-task-tf {
+        width: 95%;
+    }
+}
