@@ -42,7 +42,24 @@ function TodoList() {
                                                               task={task}
                                                               index={index}
                                                               handleDelete={deleteTask} />);
-
+    if (taskList.length === 0) {
+        return (
+            <div id="container">
+                <Grid container>
+                    <Grid item xs={12}>
+                        <Grid container justify="center">
+                            <Paper id="list-paper">
+                                <Typography variant="h6" align="center">
+                                    Yay! Nothing to do for now!
+                                </Typography>
+                            </Paper>
+                            <AddTodo addToTasks={addToTasks}/>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </div>
+        );
+    }
     return(
         <div id="container">
             <Grid container>
