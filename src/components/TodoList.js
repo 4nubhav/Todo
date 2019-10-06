@@ -7,16 +7,25 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import ClearIcon from '@material-ui/icons/Clear';
 import AddTodo from "./AddTodo";
+import Box from "@material-ui/core/Box";
 
 function TodoListItem(props) {
     return (
-        <li style={{ overflow: "auto" }}>
-            <Typography variant="body1" display="inline" style={{ float: "left", paddingTop: "12px" }}>
-                {props.task}
-            </Typography>
-            <IconButton onClick={props.handleDelete} value={props.task} style={{ float: "right" }}>
-                <ClearIcon/>
-            </IconButton>
+        <li>
+            <div style={{ width: '100%' }}>
+                <Box display="flex">
+                    <Box flexGrow={1}>
+                        <Typography variant="body1" style={{ paddingTop: 12 }}>
+                            {props.task}
+                        </Typography>
+                    </Box>
+                    <Box>
+                        <IconButton onClick={props.handleDelete} value={props.task}>
+                            <ClearIcon/>
+                        </IconButton>
+                    </Box>
+                </Box>
+            </div>
         </li>
     );
 }
@@ -42,33 +51,20 @@ function TodoList() {
                                                               task={task}
                                                               index={index}
                                                               handleDelete={deleteTask} />);
-    if (taskList.length === 0) {
-        return (
-            <div id="container">
-                <Grid container>
-                    <Grid item xs={12}>
-                        <Grid container justify="center">
-                            <Paper id="list-paper">
-                                <Typography variant="h6" align="center">
-                                    Yay! Nothing to do for now!
-                                </Typography>
-                            </Paper>
-                            <AddTodo addToTasks={addToTasks}/>
-                        </Grid>
-                    </Grid>
-                </Grid>
-            </div>
-        );
-    }
+    const RenderTaskList = () => {
+        if (taskList.length === 0)
+            return <Typography variant="h6" align="center">Yay! Nothing to do for now!</Typography>;
+        else
+            return <ul>{taskList}</ul>;
+    };
+
     return(
-        <div id="container">
+        <div style={{ paddingBottom: 80 }}>
             <Grid container>
                 <Grid item xs={12}>
                     <Grid container justify="center">
                         <Paper id="list-paper">
-                            <ul>
-                                {taskList}
-                            </ul>
+                            <RenderTaskList/>
                         </Paper>
                         <AddTodo addToTasks={addToTasks}/>
                     </Grid>

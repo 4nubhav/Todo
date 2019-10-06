@@ -3,7 +3,7 @@ import './css/AddTodo.css'
 import TextField from "@material-ui/core/TextField";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from '@material-ui/icons/Add';
-import Paper from "@material-ui/core/Paper";
+import Box from '@material-ui/core/Box';
 
 function AddTodo(props) {
     const [newTask, setNewTask] = useState("");
@@ -16,26 +16,34 @@ function AddTodo(props) {
     };
 
     return (
-        <Paper id="form-paper">
-            <TextField
-                className="new-task-tf"
-                type="text"
-                required={true}
-                value={newTask}
-                onChange={(e) => setNewTask(e.target.value)}
-                placeholder="What to do...?"
-                margin="normal"
-                autoComplete='off'
-                InputLabelProps={{
-                    shrink: true,
-                }}
-            />
-            <div style={{ float: "right", padding: 10 }}>
-                <Fab size="small" color="secondary">
-                    <AddIcon onClick={addTask}/>
-                </Fab>
-            </div>
-        </Paper>
+        <div id="form-paper">
+            <Box display="flex" p={1} bgcolor="background.paper">
+                <Box p={1} flexGrow={1}>
+                    <TextField
+                        type="text"
+                        required={true}
+                        value={newTask}
+                        onChange={(e) => setNewTask(e.target.value)}
+                        placeholder="What to do...?"
+                        margin="none"
+                        fullWidth
+                        autoComplete='off'
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                        InputProps={{
+                            style: { fontSize: 18 }
+                        }}
+                        style={{ marginTop: 15 }}
+                    />
+                </Box>
+                <Box p={1}>
+                    <Fab size="medium" color="primary">
+                        <AddIcon onClick={addTask}/>
+                    </Fab>
+                </Box>
+            </Box>
+        </div>
     );
 }
 

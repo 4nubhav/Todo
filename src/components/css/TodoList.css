@@ -1,10 +1,6 @@
-#container {
-    padding-bottom: 56px;
-}
-
 #list-paper {
     margin: 20px;
-    padding: 15px 15px 15px 20px;
+    padding: 15px 15px 15px 25px;
 }
 
 #list-paper ul {
@@ -22,10 +18,6 @@
 }
 
 @media screen and (min-width: 600px) {
-    #container {
-        padding-bottom: 70px;
-    }
-
     #list-paper {
         min-width: 60%;
     }
