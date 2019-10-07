@@ -1,48 +1,26 @@
 import React, { useState } from 'react';
 import './css/TodoList.css'
 import 'typeface-roboto';
-import IconButton from '@material-ui/core/IconButton';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import ClearIcon from '@material-ui/icons/Clear';
+import TodoListItem from "../TodoListItem";
 import AddTodo from "./AddTodo";
-import Box from "@material-ui/core/Box";
-
-function TodoListItem(props) {
-    return (
-        <li>
-            <div style={{ width: '100%' }}>
-                <Box display="flex">
-                    <Box flexGrow={1}>
-                        <Typography variant="body1" style={{ paddingTop: 12 }}>
-                            {props.task}
-                        </Typography>
-                    </Box>
-                    <Box>
-                        <IconButton onClick={props.handleDelete} value={props.task}>
-                            <ClearIcon/>
-                        </IconButton>
-                    </Box>
-                </Box>
-            </div>
-        </li>
-    );
-}
 
 function TodoList() {
     const [tasks, setTasks] = useState(() => {
         const localTasks = localStorage.getItem('tasks');
         return localTasks ? JSON.parse(localTasks) : []
     });
+    // const [tasks, setTasks] = useState(['Get up', 'Have coffee', 'Start coding']);
 
     const addToTasks = (newTask) => {
         setTasks([...tasks, newTask]);
         localStorage.setItem('tasks', JSON.stringify([...tasks, newTask]));
     };
 
-    const deleteTask = (task) => {
-        let updatedTasks = tasks.filter(n => task.currentTarget.value !== n);
+    const deleteTask = (e) => {
+        let updatedTasks = tasks.filter(n => e.currentTarget.value !== n);
         setTasks(updatedTasks);
         localStorage.setItem('tasks', JSON.stringify(updatedTasks));
     };

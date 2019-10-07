@@ -24,3 +24,4 @@ yarn-debug.log*
 yarn-error.log*
 
 ic_launcher.zip
+src/components/snippets.txt
